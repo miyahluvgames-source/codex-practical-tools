@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Codex Practical Tools map</title>
+  <desc id="desc">A simple map of the public tools currently packaged in the Codex Practical Tools repository.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#16263e"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16314f"/>
+      <stop offset="100%" stop-color="#1d4569"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 38px "Segoe UI", Arial, sans-serif; fill: #f8fafc; }
+      .subtitle { font: 400 20px "Segoe UI", Arial, sans-serif; fill: #cbd5e1; }
+      .card-title { font: 700 28px "Segoe UI", Arial, sans-serif; fill: #f8fafc; }
+      .card-text { font: 400 18px "Segoe UI", Arial, sans-serif; fill: #dbe7f3; }
+      .eyebrow { font: 700 14px "Segoe UI", Arial, sans-serif; fill: #082f49; }
+      .line { stroke: #67e8f9; stroke-width: 4; stroke-linecap: round; opacity: 0.8; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" fill="url(#bg)"/>
+  <circle cx="1080" cy="140" r="180" fill="#123252" opacity="0.24"/>
+  <circle cx="180" cy="620" r="220" fill="#15385b" opacity="0.22"/>
+
+  <text x="80" y="90" class="title">Codex Practical Tools</text>
+  <text x="80" y="128" class="subtitle">A public toolbox for reusable Codex-side utilities and operator-facing tools.</text>
+
+  <line x1="640" y1="250" x2="640" y2="320" class="line"/>
+  <line x1="420" y1="455" x2="560" y2="455" class="line"/>
+  <line x1="720" y1="455" x2="860" y2="455" class="line"/>
+
+  <g>
+    <rect x="430" y="170" width="420" height="120" rx="24" fill="url(#card)" stroke="#67e8f9" stroke-opacity="0.45"/>
+    <rect x="470" y="196" width="140" height="28" rx="14" fill="#67e8f9"/>
+    <text x="495" y="215" class="eyebrow">Umbrella Repo</text>
+    <text x="470" y="248" class="card-title">Shared Public Tooling</text>
+    <text x="470" y="278" class="card-text">Portable utilities, reference implementations, and operator-facing helpers.</text>
+  </g>
+
+  <g>
+    <rect x="120" y="350" width="420" height="210" rx="24" fill="url(#card)" stroke="#67e8f9" stroke-opacity="0.45"/>
+    <rect x="160" y="376" width="140" height="28" rx="14" fill="#67e8f9"/>
+    <text x="193" y="395" class="eyebrow">Tool 1</text>
+    <text x="160" y="430" class="card-title">Mobile Codex Desktop Bridge</text>
+    <text x="160" y="464" class="card-text">Continue a live Codex Desktop thread</text>
+    <text x="160" y="492" class="card-text">from phone or tablet through a</text>
+    <text x="160" y="520" class="card-text">private, desktop-backed web UI.</text>
+  </g>
+
+  <g>
+    <rect x="740" y="350" width="420" height="210" rx="24" fill="url(#card)" stroke="#67e8f9" stroke-opacity="0.45"/>
+    <rect x="780" y="376" width="140" height="28" rx="14" fill="#67e8f9"/>
+    <text x="813" y="395" class="eyebrow">Tool 2</text>
+    <text x="780" y="430" class="card-title">Agent Control Panel</text>
+    <text x="780" y="464" class="card-text">Render a clear operator dashboard</text>
+    <text x="780" y="492" class="card-text">for local agent stacks with shared</text>
+    <text x="780" y="520" class="card-text">snapshot schemas and adapters.</text>
+  </g>
+
+  <text x="80" y="670" class="subtitle">Standalone end-user tools can still have their own dedicated repos; this collection is for reusable public building blocks.</text>
+</svg>

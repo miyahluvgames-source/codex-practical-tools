@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "title": "Agent Control Panel",
+    "subtitle": "Portable operator view for a Claude Code stack.",
+    "agentFamily": "Claude Code",
+    "stackRoot": "/path/to/your/stack",
+    "backupRoot": "/path/to/your/backup",
+    "operatorNote": "Replace this file with your real stack metadata and operating rules."
+  },
+  "status": [
+    {
+      "label": "Browser lane",
+      "value": "Healthy by default",
+      "tone": "good",
+      "note": "Use the browser-native lane while the page stays inside a stable DOM surface."
+    },
+    {
+      "label": "Desktop lane",
+      "value": "Ready for takeover",
+      "tone": "good",
+      "note": "Use the desktop lane for native UI, browser chrome, file pickers, and visible-truth verification."
+    },
+    {
+      "label": "Dynamic lane",
+      "value": "Escalation only",
+      "tone": "neutral",
+      "note": "Use the dynamic lane only when normal desktop automation is too static."
+    },
+    {
+      "label": "Snapshot model",
+      "value": "Schema-driven",
+      "tone": "neutral",
+      "note": "This panel stays portable because the UI is generic and adapters supply the data."
+    }
+  ],
+  "lanes": [
+    {
+      "name": "Browser-native lane",
+      "accent": "browser",
+      "summary": "Primary route for healthy webpage DOM work.",
+      "useWhen": [
+        "Stable DOM tasks such as navigation, reading, forms, and normal clicks.",
+        "Use the fastest browser-native tooling your client actually has."
+      ],
+      "escalateWhen": "Escalate when native browser UI, file pickers, no-op actions, or visible-state mismatches appear."
+    },
+    {
+      "name": "Desktop-control lane",
+      "accent": "desktop",
+      "summary": "Truth layer for native dialogs, browser chrome, weak UIA, and final visual verification.",
+      "useWhen": [
+        "Native browser UI, file pickers, Windows dialogs, and weak-UIA apps.",
+        "When the screen must arbitrate whether the task really finished."
+      ],
+      "escalateWhen": "Escalate again only when the target is moving, animated, drag-validated, or timing-sensitive."
+    },
+    {
+      "name": "Dynamic-control lane",
+      "accent": "dynamic",
+      "summary": "High-frequency watch-think-act path for motion-heavy or timing-sensitive surfaces.",
+      "useWhen": [
+        "Canvas surfaces, drag validation, game-like UI, or short hit windows.",
+        "Use only when the browser or desktop lane is too static."
+      ],
+      "escalateWhen": "Drop back to the browser or desktop lane as soon as a cheaper route is healthy again."
+    }
+  ],
+  "principles": [
+    {
+      "title": "Visible truth wins",
+      "body": "If the tool says success but the screen does not, trust the visible state."
+    },
+    {
+      "title": "Escalate deliberately",
+      "body": "Use the lightest route that can still complete the task, then escalate only when reality demands it."
+    },
+    {
+      "title": "Recovery is part of the system",
+      "body": "Browser stalls, native blockers, focus drift, and timing misses are normal; the stack should recover instead of guessing."
+    },
+    {
+      "title": "Do not trap knowledge in chat",
+      "body": "Stable workflows, limits, and helper behavior should be written back into docs, scripts, and project-local notes."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Local universal startup prompt",
+      "summary": "Use when a new local session must synchronize against the current stack before doing real work.",
+      "body": "Read the local foundation docs, verify the machine state, map the current lanes, and only then start the task."
+    },
+    {
+      "title": "Agent-specific startup prompt",
+      "summary": "Use when a session is clearly tied to one client family and should stay focused on that stack.",
+      "body": "Keep the default browser route pure, keep desktop rescue ready, and avoid dragging unrelated sidecars into generic work."
+    },
+    {
+      "title": "Project-fork startup prompt",
+      "summary": "Use only after sync is complete and the session should evolve independently.",
+      "body": "Fork the main foundation into a project-local stack, write new learnings there first, and only promote back on purpose."
+    }
+  ],
+  "helpers": [
+    {
+      "name": "browser preflight",
+      "lane": "browser",
+      "summary": "Checks for obvious native blockers before the first serious browser action.",
+      "path": "/path/to/browser-preflight",
+      "exists": true
+    },
+    {
+      "name": "browser stall rescue",
+      "lane": "browser",
+      "summary": "First recovery step after a no-op, timeout, or localized native prompt.",
+      "path": "/path/to/browser-stall-rescue",
+      "exists": true
+    },
+    {
+      "name": "visual audit",
+      "lane": "desktop",
+      "summary": "Compares tool output with the visible screen when they disagree.",
+      "path": "/path/to/visual-audit",
+      "exists": true
+    },
+    {
+      "name": "stable input",
+      "lane": "desktop",
+      "summary": "Clipboard-first verified input for IME-heavy or fragile text fields.",
+      "path": "/path/to/stable-input",
+      "exists": true
+    },
+    {
+      "name": "dynamic surface pipeline",
+      "lane": "dynamic",
+      "summary": "Escalation path for moving or timing-sensitive surfaces.",
+      "path": "/path/to/dynamic-pipeline",
+      "exists": true
+    }
+  ],
+  "skills": [
+    {
+      "name": "browser-failsafe-rescue",
+      "summary": "Recover from browser stalls and native blockers.",
+      "group": "installed",
+      "path": "/path/to/browser-failsafe-rescue"
+    },
+    {
+      "name": "dynamic-control-escalation",
+      "summary": "Decide when to escalate into the high-frequency lane.",
+      "group": "installed",
+      "path": "/path/to/dynamic-control-escalation"
+    },
+    {
+      "name": "windows-desktop-precision",
+      "summary": "Handle weak-UIA surfaces and small targets more precisely.",
+      "group": "installed",
+      "path": "/path/to/windows-desktop-precision"
+    }
+  ],
+  "parameters": [
+    {
+      "group": "Runtime",
+      "items": [
+        { "label": "Model", "value": "Replace me" },
+        { "label": "Reasoning", "value": "Replace me" }
+      ]
+    },
+    {
+      "group": "Paths",
+      "items": [
+        { "label": "Stack root", "value": "/path/to/your/stack" },
+        { "label": "Backup root", "value": "/path/to/your/backup" }
+      ]
+    }
+  ],
+  "docs": [
+    {
+      "title": "Foundation entry",
+      "summary": "The top-level operator and routing docs for your stack.",
+      "path": "/path/to/foundation-entry"
+    },
+    {
+      "title": "Failsafe guide",
+      "summary": "Rules for browser stalls, native blockers, and screen-first verification.",
+      "path": "/path/to/failsafe-guide"
+    },
+    {
+      "title": "Dynamic lane guide",
+      "summary": "Escalation rules for motion, timing, and drag-sensitive work.",
+      "path": "/path/to/dynamic-guide"
+    }
+  ],
+  "adapters": [
+    {
+      "name": "Codex adapter",
+      "summary": "Builds a snapshot from a local Codex stack by reading docs, config, and installed skills.",
+      "path": "tools/agent-control-panel/adapters/codex/build_codex_snapshot.py"
+    },
+    {
+      "name": "Claude Code adapter",
+      "summary": "Builds the same snapshot shape from a JSON config for Claude Code or adjacent local-agent stacks.",
+      "path": "tools/agent-control-panel/adapters/claude-code/build_claude_snapshot.py"
+    }
+  ]
+}

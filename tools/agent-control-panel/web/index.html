@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agent Control Panel</title>
+  <link rel="stylesheet" href="./panel.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="nav">
+      <div>
+        <div class="eyebrow">Operator visibility</div>
+        <h1>Agent Control Panel</h1>
+      </div>
+      <p id="navSummary"></p>
+      <nav class="nav-links">
+        <a href="#hero">Overview</a>
+        <a href="#status">Status</a>
+        <a href="#lanes">Lanes</a>
+        <a href="#principles">Principles</a>
+        <a href="#prompts">Prompts</a>
+        <a href="#helpers">Helpers</a>
+        <a href="#skills">Skills</a>
+        <a href="#parameters">Parameters</a>
+        <a href="#docs">Docs</a>
+        <a href="#adapters">Adapters</a>
+      </nav>
+      <div class="meta-list" id="metaList"></div>
+    </aside>
+
+    <main class="content">
+      <section class="hero" id="hero">
+        <div class="hero-copy">
+          <div class="hero-badges" id="heroBadges"></div>
+          <h2>Make the stack legible.</h2>
+          <p>
+            This panel turns a local agent setup into something an operator can
+            read, verify, and hand off. It is built to work for Codex, Claude
+            Code, and adjacent local-agent stacks through adapters instead of
+            one-off machine dumps.
+          </p>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-grid" id="metricGrid"></div>
+        </div>
+      </section>
+
+      <section class="section" id="status">
+        <div class="section-head">
+          <div>
+            <h3>Current operating posture</h3>
+            <p>
+              Summarize the stack before you trust it: what the main lanes are,
+              which recovery path exists, and whether the panel snapshot is
+              current.
+            </p>
+          </div>
+        </div>
+        <div class="status-grid" id="statusGrid"></div>
+      </section>
+
+      <section class="section" id="lanes">
+        <div class="section-head">
+          <div>
+            <h3>Execution lanes</h3>
+            <p>
+              The panel assumes a routing model: browser first, desktop when
+              native UI or visible truth matters, dynamic only when normal
+              automation is too static.
+            </p>
+          </div>
+        </div>
+        <div class="lane-grid" id="laneGrid"></div>
+      </section>
+
+      <section class="section" id="principles">
+        <div class="section-head">
+          <div>
+            <h3>Routing principles</h3>
+            <p>
+              These are not implementation details. They are the rules that stop
+              a local automation stack from becoming a black box.
+            </p>
+          </div>
+        </div>
+        <div class="section-grid" id="principleGrid"></div>
+      </section>
+
+      <section class="section" id="prompts">
+        <div class="section-head">
+          <div>
+            <h3>Startup prompt pack</h3>
+            <p>
+              Sessions should synchronize against a real prompt pack, not stale
+              hand-copied instructions.
+            </p>
+          </div>
+        </div>
+        <div class="section-grid" id="promptGrid"></div>
+      </section>
+
+      <section class="section" id="helpers">
+        <div class="section-head">
+          <div>
+            <h3>Helper atlas</h3>
+            <p>
+              High-frequency helpers are where most practical agent stacks hide
+              their real operating contract.
+            </p>
+          </div>
+        </div>
+        <div class="toolbar">
+          <span class="footer-note">Filter by helper name, lane, or summary.</span>
+          <input id="helperFilter" type="search" placeholder="Filter helpers..." />
+        </div>
+        <div class="helper-grid" id="helperGrid"></div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="section-head">
+          <div>
+            <h3>Skills</h3>
+            <p>
+              Skills remain visible as operator-facing capabilities rather than
+              buried local files.
+            </p>
+          </div>
+        </div>
+        <div class="toolbar">
+          <span class="footer-note">Filter by skill name or summary.</span>
+          <input id="skillFilter" type="search" placeholder="Filter skills..." />
+        </div>
+        <div class="skills-grid" id="skillsGrid"></div>
+      </section>
+
+      <section class="section" id="parameters">
+        <div class="section-head">
+          <div>
+            <h3>Parameters</h3>
+            <p>
+              Show the small set of runtime and path values that materially shape
+              operator behavior.
+            </p>
+          </div>
+        </div>
+        <div class="param-grid" id="paramGrid"></div>
+      </section>
+
+      <section class="section" id="docs">
+        <div class="section-head">
+          <div>
+            <h3>Source docs</h3>
+            <p>
+              These are the files a new session should anchor to before it trusts
+              its own memory.
+            </p>
+          </div>
+        </div>
+        <div class="doc-grid" id="docGrid"></div>
+      </section>
+
+      <section class="section" id="adapters">
+        <div class="section-head">
+          <div>
+            <h3>Adapters</h3>
+            <p>
+              The UI is static. Brand-specific behavior belongs in the adapter
+              that writes the snapshot.
+            </p>
+          </div>
+        </div>
+        <div class="adapter-grid" id="adapterGrid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./panel-data.js"></script>
+  <script src="./panel.js"></script>
+</body>
+</html>
